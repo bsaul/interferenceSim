@@ -146,7 +146,7 @@ sim_interference_data <- function(base_dt, potential_outcomes, parameters){
                     A = ifelse(B == 0, 0, rbinom(n, 1, p=2/3))})
   
   # Calculate k = # treated in hood i excluding subject j 
-  sim_dt <- ddply(dt, .(group), mutate, k = sum(A) - A)
+  sim_dt <- plyr::ddply(dt, plyr::.(group), mutate, k = sum(A) - A)
   
   # Observe the outcome
   y <- numeric(n)
